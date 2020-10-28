@@ -29,6 +29,13 @@ def main():
     ##General Settings
     st.beta_set_page_config(page_title='CLUE - Immobilienatlas', page_icon='logo.jpg')
 
+    hide_menu_style = """
+        <style>
+        #MainMenu {visibility: hidden;}
+        </style>
+        """
+    st.markdown(hide_menu_style, unsafe_allow_html=True)
+
     input = st.selectbox('Wähle deine Stadt aus', select_list)
     df_select = df[(df['Stadt'] == input)]
 
