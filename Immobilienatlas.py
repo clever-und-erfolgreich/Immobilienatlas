@@ -49,7 +49,7 @@ select_list.sort()
 def main():
     """ Stock APP """
     ##General Settings
-    st.beta_set_page_config(page_title='CLUE - Immobilienatlas', page_icon='logo.jpg')
+    st.set_page_config(page_title='CLUE - Immobilienatlas', page_icon='logo.jpg')
 
     ## Hide Hamburger Menu
     hide_menu_style = """
