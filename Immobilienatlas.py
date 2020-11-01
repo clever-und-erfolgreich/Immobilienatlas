@@ -49,7 +49,7 @@ select_list.sort()
 def main():
     """ Stock APP """
     ##General Settings
-    st.set_page_config(page_title='CLUE - Immobilienatlas', page_icon='logo.jpg')
+    st.beta_set_page_config(page_title='CLUE - Immobilienatlas', page_icon='logo.jpg')
 
     ## Hide Hamburger Menu
     hide_menu_style = """
@@ -69,7 +69,7 @@ def main():
         city_Lon = format(df_clt['Lon_City'][(df_clt['Stadt'] == city_name)].drop_duplicates().values[0])
         city_Lat = format(df_clt['Lat_City'][(df_clt['Stadt'] == city_name)].drop_duplicates().values[0])
 
-        offer = requests.get('https://www.realbest.de/immobiliensuche?realEstateType=CONDOMINIUM&scrollToResults=true&cityinput='+city_name+'%2C+Deutschland&longitude='+city_Lon+'&latitude='+city_Lat+'&searchRadius=TEN&searchParameters=true&cid=352040&afId=4mhZD105376')
+        offer = requests.get('https://www.realbest.de/immobiliensuche?realEstateType=CONDOMINIUM&scrollToResults=true&cityinput='+city_name+'%2C+Deutschland&longitude='+city_Lon+'&latitude='+city_Lat+'&searchRadius=FIFTEEN&searchParameters=true&cid=352040&afId=4mhZD105376')
         soup_offer = bs(offer.content, 'html.parser')
         content = soup_offer.body('td', {'class': 'details-with-more-columns'})
 
@@ -168,7 +168,6 @@ def main():
         qmk_input = plz_input[(plz_input['QM-Klasse'] == QMK)]
 
     st.table(qmk_input)
-
     
 if __name__ == '__main__':
     main() 
