@@ -109,6 +109,7 @@ def main():
         offer_3['Angebot'] = '<a href="' + offer_3['Link'] + '" target="_blank">Zum Angebot</a>'
 
         offer_4 = offer_3[['Postleitzahl', 'Preis', 'QM', 'Preis/QM', 'Erwartete Miete/QM', 'Erwartete Rendite (%)', 'Angebot']]
+        
         html = offer_4.to_html(escape=False, index=False)
         tr = 1
     except:
@@ -163,11 +164,11 @@ def main():
         QMK = st.selectbox('Wähle eine QM-Klasse, um danach zu filtern', ['', 'bis 40 QM', '40 bis 60 QM', '60 bis 80 QM', '80 bis 100 QM', '100 bis 120 QM', 'ab 120 QM'])
     
     if QMK == '':
-        qmk_input = plz_input
+        qmk_input = plz_input.style.set_precision(2).bar(subset=['Miete/QM - QMK', 'Preis/QM - QMK', 'Rendite (%) - QMK'], align='mid', color=['#red', '#0059ff'])
     else:
-        qmk_input = plz_input[(plz_input['QM-Klasse'] == QMK)]
+        qmk_input = plz_input[(plz_input['QM-Klasse'] == QMK)].style.set_precision(2).bar(subset=['Miete/QM - QMK', 'Preis/QM - QMK', 'Rendite (%) - QMK'], align='mid', color=['#d65f5f', '#5fba7d'])
 
     st.table(qmk_input)
-    
+ 
 if __name__ == '__main__':
     main() 
