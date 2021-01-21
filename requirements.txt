@@ -4,4 +4,4 @@ beautifulsoup4
 numpy
 altair
 lxml
-xlrd
+openpyxl
